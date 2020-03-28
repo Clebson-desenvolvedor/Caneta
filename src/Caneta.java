@@ -20,7 +20,7 @@ public class Caneta {
 		this.carga = 100;
 		this.tampada = true;
 	}
-
+ 
 	public Caneta() {
 		
 	}
