@@ -17,10 +17,10 @@ public class Caneta {
 		this.modelo = modelo;
 		this.cor = cor;
 		this.ponta = ponta;
-		this.carga = 100;
+		this.carga = 50;
 		this.tampada = true;
 	}
- 
+
 	public Caneta() {
 		
 	}
@@ -98,16 +98,15 @@ public class Caneta {
 	}
 	
 	public void escrever() {
-		if(this.tampada == false) {
-			if(this.carga > 0) {
-				System.out.println("Estou escrevendo... ");
+		if(tampada == true) {
+			System.out.println("ERRO! não posso escrever, pois estou tampada! ");
+		} else {
+			if(carga > 0) {
+				System.out.println("Estou esvrevendo... ");
 				this.carga -= 5;
-			}else {
-				System.out.println("ERRO! Não posso escrever, pois estou sem carga. ");
+			} else {
+				System.out.println("ERRO! não poss escrever, pois estou sem carga! ");
 			}
-		}
-		else if(this.carga <= 0) {
-			System.out.println("ERRO! Não posso escrever, pois estou tampada. ");
 		}
 	}
 	
@@ -161,5 +160,5 @@ public class Caneta {
 	
 	public void encerrarPrograma() {
 		System.out.println("\tPrograma encerrado!");
-	}
+	}	
 }
