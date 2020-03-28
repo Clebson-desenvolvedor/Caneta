@@ -27,8 +27,8 @@ public class ProgramaCaneta {
 		do {
 			caneta.menu(opcao);
 		} while (opcao != 6);
-	
+		
+		caneta.encerrarPrograma();
 		sc.close();
 	}
-
 }
