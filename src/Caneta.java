@@ -151,6 +151,7 @@ public class Caneta {
 			break;
 		case 6:
 			encerrarPrograma();
+			break;
 		default:
 			System.out.println("Digite um comando válido");
 			break;
