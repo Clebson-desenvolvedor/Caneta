@@ -1,4 +1,8 @@
+import java.util.Scanner;
+
 public class Caneta {
+	
+	Scanner sc = new Scanner(System.in);
 
 	//Atributos
 	private String modelo;
@@ -6,20 +10,22 @@ public class Caneta {
 	private double ponta;
 	private int carga;
 	private boolean tampada;
+	int opcao;
 	
 	//Construtores
-	public Caneta(String modelo, String cor, double ponta, boolean tampada) {
+	public Caneta(String modelo, String cor, double ponta) {
 		this.modelo = modelo;
 		this.cor = cor;
 		this.ponta = ponta;
-		this.tampada = tampada;
+		this.carga = 100;
+		this.tampada = true;
 	}
 
 	public Caneta() {
 		
 	}
 	
-	//Métodos especiais
+	//MÃ©todos especiais
 	public String getModelo() {
 		return modelo;
 	}
@@ -56,13 +62,19 @@ public class Caneta {
 		return tampada;
 	}
 	
-	//Métodos personalizados
+	//MÃ©todos personalizados
 	public void statusAtual() {
-		System.out.println("Uma caneta do modelo" + this.modelo);
+		System.out.println("\t  ** Status da Caneta ** \n\n");
+		System.out.println("Uma caneta do modelo " + this.modelo);
 		System.out.println("Cor " + this.cor);
 		System.out.println("ponta " + this.ponta);
 		System.out.println("carga " + this.carga + "% ");
-		System.out.println("tampada? " + this.tampada);
+		if (tampada == true) {
+			System.out.println("Tampada");
+		}else {
+			System.out.println("Destampada");
+		}
+		System.out.println("---------------------------------------------------------");
 	}
 	
 	public void rabiscar(){
@@ -76,11 +88,11 @@ public class Caneta {
 			}
 			
 			else {
-				System.out.println("ERRO! Não posso rabiscar, pois estou sem carga. ");
+				System.out.println("ERRO! NÃ£o posso rabiscar, pois estou sem carga. ");
 			}
 		
 		}else {
-			System.out.println("ERRO! Não posso rabiscar, pois estou tampada. ");
+			System.out.println("ERRO! NÃ£o posso rabiscar, pois estou tampada. ");
 		}
 		
 	}
@@ -91,11 +103,11 @@ public class Caneta {
 				System.out.println("Estou escrevendo... ");
 				this.carga -= 5;
 			}else {
-				System.out.println("ERRO! Não posso escrever, pois estou sem carga. ");
+				System.out.println("ERRO! NÃ£o posso escrever, pois estou sem carga. ");
 			}
 		}
 		else if(this.carga <= 0) {
-			System.out.println("ERRO! Não posso escrever, pois estou tampada. ");
+			System.out.println("ERRO! NÃ£o posso escrever, pois estou tampada. ");
 		}
 	}
 	
@@ -108,13 +120,45 @@ public class Caneta {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-}
+	public int menu(int opcao) {
+		
+		System.out.println("\tO que deseja fazer agora? \n"
+				+ "\n1 - mostrar status da caneta"
+				+ "\n2 - rabiscar"
+				+ "\n3 - escrever"
+				+ "\n4 - tampar"
+				+ "\n5 - destampar"
+				+ "\n6 - encerrar programa"
+				+ "\n-------------------------------");
 
+		opcao = sc.nextInt();
+		
+		switch (opcao) {
+		case 1:
+			statusAtual();
+			break;
+		case 2:
+			rabiscar();
+			break;
+		case 3:
+			escrever();
+			break;
+		case 4:
+			tampar();
+			break;
+		case 5:
+			destampar();
+			break;
+		case 6:
+			encerrarPrograma();
+		default:
+			System.out.println("Digite um comando vÃ¡lido");
+			break;
+		}
+		return opcao;
+	}
+	
+	public void encerrarPrograma() {
+		System.out.println("\tPrograma encerrado!");
+	}
+}
